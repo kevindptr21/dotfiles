@@ -8,6 +8,7 @@ return {
         "shfmt",
         "flake8",
         "prettier",
+        "typescript-language-server",
       },
     },
   },
