@@ -3,6 +3,12 @@
 -- Add any additional keymaps here
 local keymap = vim.keymap
 
+-- Move cursor using h,j,k,l when insert mode
+keymap.set("i", "<D-H>", "<Left>", { desc = "Move left", remap = true })
+keymap.set("i", "<D-J>", "<Down>", { desc = "Move down", remap = true })
+keymap.set("i", "<D-K>", "<Up>", { desc = "Move up", remap = true })
+keymap.set("i", "<D-L>", "<Right>", { desc = "Move right", remap = true })
+
 -- Move to window using the <ctrl> hjkl keys
 keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
 keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
@@ -35,8 +41,11 @@ keymap.set("n", "sh", ":split<Return>", { noremap = true, silent = true, desc = 
 keymap.set("n", "sv", ":vsplit<Return>", { noremap = true, silent = true, desc = "Split window vertically" })
 keymap.set("n", "sx", "<cmd>close<CR>", { noremap = true, silent = true, desc = "Close current split" })
 
+-- Resize Window
+keymap.set("n", "<C-w><left>", "<C-w><")
+keymap.set("n", "<C-w><right>", "<C-w>>")
+keymap.set("n", "<C-w><up>", "<C-w>+")
+keymap.set("n", "<C-w><down>", "<C-w>-")
+
 -- Close Insert Mode
 keymap.set("i", "jk", "<Esc>")
-
--- Undotree
-keymap.set("n", "<leader>U", vim.cmd.UndotreeToggle)

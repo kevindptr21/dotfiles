@@ -8,7 +8,7 @@ return {
           views = {
             cmdline_popup = {
               position = {
-                row = "50%",
+                row = 25,
                 col = "50%",
               },
               size = {
@@ -19,7 +19,8 @@ return {
             },
             cmdline_popupmenu = {
               position = {
-                row = "67%",
+                -- row = "67%",
+                row = 28,
                 col = "50%",
               },
             },
@@ -138,5 +139,14 @@ return {
         },
       },
     },
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    -- opts = {
+    --   triggers = {
+    --     { "|", MODE = { "n", "v" } },
+    --   },
+    -- },
   },
 }
