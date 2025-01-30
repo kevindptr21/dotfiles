@@ -39,6 +39,8 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 -- Split Window
 keymap.set("n", "sh", ":split<Return>", { noremap = true, silent = true, desc = "Split window horizontally" })
 keymap.set("n", "sv", ":vsplit<Return>", { noremap = true, silent = true, desc = "Split window vertically" })
+keymap.set("n", "\\", ":split<Return>", { noremap = true, silent = true, desc = "Split window horizontally" })
+keymap.set("n", "|", ":vsplit<Return>", { noremap = true, silent = true, desc = "Split window vertically" })
 keymap.set("n", "sx", "<cmd>close<CR>", { noremap = true, silent = true, desc = "Close current split" })
 
 -- Resize Window
@@ -49,3 +51,10 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Close Insert Mode
 keymap.set("i", "jk", "<Esc>")
+
+-- -- Multi cursor
+-- keymap.set("i", "<C-d>", function()
+--   local new_text = vim.fn.input("Replace with?: ")
+--   local cmd = "normal! *Ncgn" .. new_text
+--   vim.cmd(cmd)
+-- end, { desc = "ctrl+d vs code alternative" })

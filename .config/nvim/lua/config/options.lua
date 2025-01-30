@@ -6,6 +6,11 @@ local opt = vim.opt
 vim.g.snacks_animate = false
 vim.g.lazyvim_prettier_needs_config = false
 
+-- TITLE
+opt.title = true
+opt.titlelen = 0
+opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+
 -- Editor Config
 -- Tab and Indentation
 opt.tabstop = 2
@@ -36,5 +41,5 @@ opt.scrolloff = 8
 
 -- MISC
 opt.backspace = "indent,eol,start"
-opt.spell = true
-opt.spelllang = { "en_us" }
+-- opt.spell = true
+-- opt.spelllang = { "en_us" }

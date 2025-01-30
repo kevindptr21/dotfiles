@@ -1,8 +1,5 @@
 # Theming
-# include theme/sonokai-andromeda.conf 
-# include theme/kanagawa.conf 
-# include theme/cyberdream.conf 
-include theme/catppuccin-mocha.conf 
+include theme/sonokai-andromeda.conf 
 
 # vim:fileencoding=utf-8:foldmethod=marker
 
@@ -11,7 +8,7 @@ include theme/catppuccin-mocha.conf
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
-#
+
 font_family      Fira Code Regular
 bold_font        Fira Code SemiBold
 italic_font      Fira Code Regular
@@ -394,7 +391,7 @@ font_size 12.0
 
 #: Mouse {{{
 
-mouse_hide_wait 1.0
+# mouse_hide_wait 3.0
 
 #: Hide mouse cursor after the specified number of seconds of the
 #: mouse not being used. Set to zero to disable mouse cursor hiding.
@@ -533,7 +530,7 @@ mouse_hide_wait 1.0
 #: mouse around. On macOS, this will also cause the OS Window under
 #: the mouse to be focused automatically when the mouse enters it.
 
-pointer_shape_when_grabbed arrow
+# pointer_shape_when_grabbed arrow
 
 #: The shape of the mouse pointer when the program running in the
 #: terminal grabs the mouse.
@@ -542,7 +539,7 @@ pointer_shape_when_grabbed arrow
 
 #: The default shape of the mouse pointer.
 
-pointer_shape_when_dragging beam
+# pointer_shape_when_dragging beam
 
 #: The default shape of the mouse pointer when dragging across text.
 
@@ -832,14 +829,14 @@ window_border_width 1pt
 #: to be pts. Note that borders are displayed only when more than one
 #: window is visible. They are meant to separate multiple windows.
 
-draw_minimal_borders yes
+# draw_minimal_borders yes
 
 #: Draw only the minimum borders needed. This means that only the
 #: borders that separate the window from a neighbor are drawn. Note
 #: that setting a non-zero window_margin_width overrides this and
 #: causes all borders to be drawn.
 
-window_margin_width 3
+# window_margin_width 0
 
 #: The window margin (in pts) (blank area outside the border). A
 #: single value sets all four sides. Two values set the vertical and
@@ -899,7 +896,7 @@ window_margin_width 3
 #: Fade the text in inactive windows by the specified amount (a number
 #: between zero and one, with zero being fully faded).
 
-hide_window_decorations titlebar-only
+# hide_window_decorations yes
 
 #: Hide the window decorations (title-bar and window borders) with
 #: yes. On macOS, titlebar-only and titlebar-and-corners can be used
@@ -1164,7 +1161,7 @@ tab_bar_style custom
 
 #: The foreground and background colors.
 
-background_opacity 0.95 
+# background_opacity 1.0
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1188,7 +1185,7 @@ background_opacity 0.95
 #: this option when reloading the config will only work if
 #: dynamic_background_opacity was enabled in the original config.
 
-background_blur 70
+# background_blur 0
 
 #: Set to a positive value to enable background blur (blurring of the
 #: visuals behind a transparent window) on platforms that support it.
@@ -1216,7 +1213,7 @@ background_blur 70
 #: When background image is scaled, whether linear interpolation
 #: should be used.
 
-dynamic_background_opacity yes
+# dynamic_background_opacity no
 
 #: Allow changing of the background_opacity dynamically, using either
 #: keyboard shortcuts (increase_background_opacity and
@@ -1791,7 +1788,7 @@ dynamic_background_opacity yes
 #: configuration will change this value only for newly created OS
 #: windows.
 
-linux_display_server auto
+# linux_display_server auto
 
 #: Choose between Wayland and X11 backends. By default, an appropriate
 #: backend based on the system state is chosen automatically. Set it
@@ -1969,8 +1966,7 @@ kitty_mod super
 
 #: Browse scrollback buffer in pager
 
-# map kitty_mod+shift+j show_scrollback
-# map kitty_mod+shift+j kitty_scrollback_nvim
+# map kitty_mod+h show_scrollback
 
 #::  You can pipe the contents of the current screen and history
 #::  buffer as STDIN to an arbitrary program using launch --stdin-
@@ -2547,13 +2543,12 @@ kitty_mod super
 # tab_bar_margin_height 0 10
 # tab_title_template " {sup.index} {title}{bell_symbol}{activity_symbol}"
 # active_tab_title_template " {sup.index} {title}{bell_symbol}{activity_symbol} "
-
-tab_bar_edge                    bottom 
+tab_bar_edge                    top
 tab_bar_style                   custom
 tab_bar_align                   left
 tab_bar_min_tabs                1
 tab_switch_strategy             previous
-tab_bar_margin_height           0 0
+tab_bar_margin_height           0 10
 inactive_tab_font_style         normal
 active_tab_font_style           normal
 active_tab_foreground           #FFFFFF
@@ -2568,7 +2563,7 @@ map kitty_mod+z combine : toggle_layout stack : scroll_prompt_to_bottom
 # tab_title_template "{' #' if layout_name == 'stack' else '  '}{fmt.fg.red}{bell_symbol}{fmt.fg.tab}{title}  "
 
 # Splitting window
-map kitty_mod+\ launch --location=hsplit --cwd=current
+map kitty_mod+shift+- launch --location=hsplit --cwd=current
 map kitty_mod+shift+\ launch --location=vsplit --cwd=current
 
 # Moving through layout 
@@ -2578,22 +2573,8 @@ map kitty_mod+k kitten pass_keys.py top    ctrl+\`>k
 map kitty_mod+l kitten pass_keys.py right  ctrl+\`>l
 
 # Resizing
-map kitty_mod+ctrl+h kitten relative_resize.py left
-map kitty_mod+ctrl+j kitten relative_resize.py down
-map kitty_mod+ctrl+k kitten relative_resize.py up
-map kitty_mod+ctrl+l kitten relative_resize.py right
+map kitty_mod+shift+h kitten relative_resize.py left
+map kitty_mod+shift+j kitten relative_resize.py down
+map kitty_mod+shift+k kitten relative_resize.py up
+map kitty_mod+shift+l kitten relative_resize.py right
 
-# # Scrollback
-# allow_remote_control yes
-# listen_on unix:/tmp/kitty
-# shell_integration enabled
-#
-# # kitty-scrollback.nvim Kitten alias
-# action_alias kitty_scrollback_nvim kitten /Users/kotakode/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py
-#
-# # Browse scrollback buffer in nvim
-# map kitty_mod+shift+j kitty_scrollback_nvim
-# # Browse output of the last shell command in nvim
-# map kitty_mod+shift+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
-# # Show clicked command output in nvim
-# mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
