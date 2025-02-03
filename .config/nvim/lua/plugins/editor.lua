@@ -213,6 +213,10 @@ return {
       }
     end,
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  },
   --   {
   --     "folke/snacks.nvim",
   --     opts = {

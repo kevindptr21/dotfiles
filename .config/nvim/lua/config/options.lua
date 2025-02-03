@@ -5,6 +5,7 @@ local opt = vim.opt
 
 vim.g.snacks_animate = false
 vim.g.lazyvim_prettier_needs_config = false
+vim.g.lazyvim_blink_main = false
 
 -- TITLE
 opt.title = true
