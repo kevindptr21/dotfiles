@@ -5,10 +5,22 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    # };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
+  outputs = inputs@{
+    self,
+    nix-darwin,
+    nixpkgs,
+    # ghostty,
+    # home-manager
+  }: let
     configuration = { pkgs, config, ... }: {
 
       nixpkgs.config.allowUnfree = true;
@@ -20,12 +32,16 @@
           vim
           neovim
           # terminal
+          # ghostty
+          tmux
           kitty
-          starship
+          # starship
           # node version manager
           fnm
           # misc
           mkalias
+          fzf
+          zoxide
         ];
 
       # fonts packages
@@ -81,5 +97,18 @@
     darwinConfigurations."dev" = nix-darwin.lib.darwinSystem {
       modules = [ configuration ];
     };
+
+    # nixosConfigurations.mysystem = nixpkgs.lib.nixosSystem {
+    #   extraSpecialArgs = {inherit inputs;};
+    #   modules = [
+    #     {
+    #       environment.systemPackages = [
+    #         ghostty.packages.x86_64-linux.default
+    #       ];
+    #     }
+    #     # TODO: Setup the home-manager
+    #     # inputs.home-manager.nixosModules.default
+    #   ];
+    # };
   };
 }
