@@ -35,7 +35,7 @@
           # ghostty
           tmux
           kitty
-          # starship
+          starship
           # node version manager
           fnm
           # misc

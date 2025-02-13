@@ -10,11 +10,11 @@ fi
 # Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Starship
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
+# # Starship
+# zinit ice as"command" from"gh-r" \
+#           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+#           atpull"%atclone" src"init.zsh"
+# zinit light starship/starship
 
 # Plugins
 zinit light zsh-users/zsh-syntax-highlighting
