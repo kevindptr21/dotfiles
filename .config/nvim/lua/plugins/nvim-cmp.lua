@@ -13,6 +13,7 @@ return {
       opts.performance = {
         debounce = 100, -- Slight delay to reduce event spam
         throttle = 50, -- Throttle requests
+        max_view_entries = 5,
       }
 
       return opts

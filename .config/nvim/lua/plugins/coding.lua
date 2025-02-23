@@ -1,10 +1,3 @@
 return {
-  {
-    "hrsh7th/nvim-cmp",
-    opts = {
-      performance = {
-        max_view_entries = 5,
-      },
-    },
-  },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
 }
