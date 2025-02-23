@@ -97,14 +97,14 @@ keybind = super+shift+backslash=text:\x01\x7C
 keybind = super+backslash=text:\x01\x25
 
 # Binding arrow keys
-# Ctrl+h cursor left
-keybind = ctrl+h=text:\x1b[D
+# alt+h for left arrow
+keybind = alt+h=text:\x1b[D
 
-# Ctrl+j for down arrow
-keybind = ctrl+j=text:\x1b[B
+# alt+j for down arrow
+keybind = alt+j=text:\x1b[B
 
-# Ctrl+k for up arrow
-keybind = ctrl+k=text:\x1b[A
+# alt+k for up arrow
+keybind = alt+k=text:\x1b[A
 
-# Ctrl+l for right arrow
-keybind = ctrl+l=text:\x1b[C
+# alt+l for right arrow
+keybind = alt+l=text:\x1b[C
