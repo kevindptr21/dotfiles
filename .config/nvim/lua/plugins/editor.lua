@@ -232,33 +232,20 @@ return {
           width = 60,
           relative = "editor",
           noautocmd = true,
-          wo = {
-            winhighlight = "NormalFloat:SnacksInputNormal,FloatBorder:SnacksInputBorder,FloatTitle:SnacksInputTitle",
-            cursorline = false,
-          },
-          bo = {
-            filetype = "snacks_input",
-            buftype = "prompt",
-          },
-          --- buffer local variables
-          b = {
-            completion = false, -- disable blink completions in input
-          },
-          keys = {
-            n_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "n", expr = true },
-            i_esc = { "<esc>", { "cmp_close", "stopinsert" }, mode = "i", expr = true },
-            i_cr = { "<cr>", { "cmp_accept", "confirm" }, mode = "i", expr = true },
-            i_tab = { "<tab>", { "cmp_select_next", "cmp" }, mode = "i", expr = true },
-            i_ctrl_w = { "<c-w>", "<c-s-w>", mode = "i", expr = true },
-            i_up = { "<up>", { "hist_up" }, mode = { "i", "n" } },
-            i_down = { "<down>", { "hist_down" }, mode = { "i", "n" } },
-            q = "cancel",
-          },
-          row = 2,
-          col = "50%",
+          row = 20,
         },
       },
+      -- explorer = {},
+      -- picker = {
+      --   sources = {
+      --     explorer = {},
+      --   },
+      -- },
     },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
   },
   -- maybe need in the future
   -- {
@@ -272,4 +259,44 @@ return {
   --     })
   --   end,
   -- },
+  -- Yazi
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    -- dependencies = { "folke/snacks.nvim", lazy = true },
+    keys = {
+      -- 👇 in this section, choose your own keymappings!
+      {
+        -- "<leader>-",
+        "<leader>e",
+        mode = { "n", "v" },
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>cw",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
+      },
+      {
+        "<c-up>",
+        "<cmd>Yazi toggle<cr>",
+        desc = "Resume the last yazi session",
+      },
+    },
+    opts = {
+      -- if you want to open yazi instead of netrw, see below for more info
+      open_for_directories = false,
+      keymaps = {
+        show_help = "<f1>",
+      },
+    },
+    -- 👇 if you use `open_for_directories=true`, this is recommended
+    init = function()
+      -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+      -- vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+    end,
+  },
 }

@@ -59,3 +59,10 @@ keymap.set("i", "jk", "<Esc>")
 --   vim.cmd(cmd)
 -- end, { desc = "ctrl+d vs code alternative" })
 --
+-- Blame Lines
+keymap.set(
+  { "n", "v" },
+  "<leader>gb",
+  "<cmd>Gitsigns blame_line<CR>",
+  { noremap = true, silent = true, desc = "Git blame line" }
+)

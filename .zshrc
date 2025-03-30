@@ -1,4 +1,10 @@
+# PATH
 export EDITOR="nvim"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.local/bin":$PATH
+
+source ~/.bash_profile
 
 # zinit DIR
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -62,6 +68,13 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias nvim='nvim'
 alias c='clear'
+# temporary
+alias python=/usr/bin/python3
+alias mysql=/usr/local/mysql/bin/mysql
+alias gpbt="git push git@github.com:bbs-lms/bbs-teacher.git"
+alias gpbs="git push git@github.com:bbs-lms/bbs-student.git"
+alias gpm="git push git@github.com:bbs-lms/bbs-teacher.git && git push git@github.com:bbs-lms/bbs-student.git"
+alias emu="./Library/Android/sdk/emulator/emulator" # emulator
 
 # Shell integrations
 eval "$(fzf --zsh)"
