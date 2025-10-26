@@ -1,9 +1,40 @@
 return {
   { "nvim-tree/nvim-web-devicons" },
   {
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      opts.presets = {
+        command_palette = {
+          views = {
+            cmdline_popup = {
+              position = {
+                row = 25,
+                col = "50%",
+              },
+              size = {
+                min_width = 60,
+                width = "auto",
+                height = "auto",
+              },
+            },
+            cmdline_popupmenu = {
+              position = {
+                -- row = "67%",
+                row = 28,
+                col = "50%",
+              },
+            },
+          },
+        },
+        long_message_to_split = true, -- long messages will be sent to a split
+        lsp_doc_border = true,
+      }
+    end,
+  },
+  {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = { "nvim-mini/mini.icons" },
     opts = function()
       local utils = require("core.utils")
       local copilot_colors = {
@@ -182,121 +213,6 @@ return {
           lualine_z = {},
         },
       }
-    end,
-  },
-  {
-    "folke/noice.nvim",
-    opts = function(_, opts)
-      opts.presets = {
-        command_palette = {
-          views = {
-            cmdline_popup = {
-              position = {
-                row = 25,
-                col = "50%",
-              },
-              size = {
-                min_width = 60,
-                width = "auto",
-                height = "auto",
-              },
-            },
-            cmdline_popupmenu = {
-              position = {
-                -- row = "67%",
-                row = 28,
-                col = "50%",
-              },
-            },
-          },
-        },
-        long_message_to_split = true, -- long messages will be sent to a split
-        lsp_doc_border = true,
-      }
-    end,
-  },
-  -- {
-  --   "nvim-telescope/telescope-file-browser.nvim",
-  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  -- },
-  {
-    "folke/snacks.nvim",
-    opts = {
-      styles = {
-        input = {
-          backdrop = false,
-          position = "float",
-          border = "rounded",
-          title_pos = "center",
-          height = 1,
-          width = 60,
-          relative = "editor",
-          noautocmd = true,
-          row = 20,
-        },
-      },
-      -- explorer = {},
-      -- picker = {
-      --   sources = {
-      --     explorer = {},
-      --   },
-      -- },
-    },
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-  -- maybe need in the future
-  -- {
-  --   "shellRaining/hlchunk.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     require("hlchunk").setup({
-  --       chunk = {
-  --         enable = true,
-  --       },
-  --     })
-  --   end,
-  -- },
-  -- Yazi
-  {
-    "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
-    -- dependencies = { "folke/snacks.nvim", lazy = true },
-    keys = {
-      -- 👇 in this section, choose your own keymappings!
-      {
-        -- "<leader>-",
-        "<leader>e",
-        mode = { "n", "v" },
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>cw",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory",
-      },
-      {
-        "<c-up>",
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last yazi session",
-      },
-    },
-    opts = {
-      -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
-      keymaps = {
-        show_help = "<f1>",
-      },
-    },
-    -- 👇 if you use `open_for_directories=true`, this is recommended
-    init = function()
-      -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-      -- vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
     end,
   },
 }
