@@ -1,22 +1,14 @@
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # PATH
 export EDITOR="nvim"
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export NDK_HOME="$ANDROID_HOME/ndk/27.1.12297006"
-export NVIM_DIR="$HOME/Dev/nvim-macos-arm64/bin"
-# XAMPP
-# export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.local/bin:/Applications/XAMPP/xamppfiles/bin":$PATH
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.local/bin:$NVIM_DIR":$PATH
+export NVIM_DIR="$HOME/dev/nvim-macos-arm64/bin"
 
-# AMPPS
-# export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.local/bin:/Applications/AMPPS/apps/bin:/Applications/AMPPS/apps/php82/bin":$PATH
-# export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$HOME/.local/bin":$PATH
+export PATH="$HOME/.local/bin:$NVIM_DIR":$PATH
 
-source ~/.bash_profile
-source ~/perl5/perlbrew/etc/bashrc
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # zinit DIR
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -30,13 +22,7 @@ fi
 # Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# # Starship
-# zinit ice as"command" from"gh-r" \
-#           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-#           atpull"%atclone" src"init.zsh"
-# zinit light starship/starship
-
-# Plugins
+# ZSH Plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -76,23 +62,23 @@ zstyle ':completions:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(starship init zsh)"
+
 # Aliases
-alias ls='ls --color'
+alias ls='ls -lah --color'
 alias v='nvim'
 alias c='clear'
 # temporary
 alias python=/usr/bin/python3
 # alias python=/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
-alias mysql=/usr/local/mysql/bin/mysql
+# alias mysql=/usr/local/mysql/bin/mysql
 alias gpbt="git push git@github.com:bbs-lms/bbs-teacher.git"
 alias gpbs="git push git@github.com:bbs-lms/bbs-student.git"
 alias gpm="git push git@github.com:bbs-lms/bbs-teacher.git && git push git@github.com:bbs-lms/bbs-student.git"
-alias emu="./Library/Android/sdk/emulator/emulator" # emulator
-
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(starship init zsh)"
+# alias emu="./Library/Android/sdk/emulator/emulator" # emulator
 
 # Yazi setup
 function y() {
@@ -103,23 +89,23 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-export ICU_ROOT=$(brew --prefix icu4c)
-export LDFLAGS="-L$ICU_ROOT/lib"
-export CPPFLAGS="-I$ICU_ROOT/include"
-export PKG_CONFIG_PATH="$ICU_ROOT/lib/pkgconfig"
+# export ICU_ROOT=$(brew --prefix icu4c)
+# export LDFLAGS="-L$ICU_ROOT/lib"
+# export CPPFLAGS="-I$ICU_ROOT/include"
+# export PKG_CONFIG_PATH="$ICU_ROOT/lib/pkgconfig"
 
 # #kevind.dwiputra6
 # export GEMINI_API_KEY="AIzaSyBqm_e6LGm7LwnuvgF7Uo_H93qHHl2_OGM"
 # # enokki
 # export GEMINI_API_KEY="AIzaSyAWiXWFy6IzGGFc8VsvsdKVzPESVbmtjbY"
 #  kevindptr
-export GEMINI_API_KEY="AIzaSyBuZhgc_NDxZ7VEQjakKop6hW4lWbjuHCE"
+# export GEMINI_API_KEY="AIzaSyBuZhgc_NDxZ7VEQjakKop6hW4lWbjuHCE"
 # # bblekutek
 # export GEMINI_API_KEY="AIzaSyBbOu2b2pEO8O92wKh770URQixT1CoTG0A"
 # # losumipsum 
 # export GEMINI_API_KEY="AIzaSyBtcOObbFOAl8N5tfh2rNY45jntHjTHQZo"
 
-export FORGE_KEY="sk-fg-v1-8cee5e75fded2fef7a0bbf3a680a4f36e24feb3b54e8c2b9d98c8f57a6a9fdf0"
+# export FORGE_KEY="sk-fg-v1-8cee5e75fded2fef7a0bbf3a680a4f36e24feb3b54e8c2b9d98c8f57a6a9fdf0"
 
 # pnpm
 export PNPM_HOME="/Users/kotakode/Library/pnpm"
@@ -128,3 +114,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
